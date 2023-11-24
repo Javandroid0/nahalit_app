@@ -3,8 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nahal_it/aiden/log_in_two.dart';
+import 'package:nahal_it/cart_provider.dart';
 import 'package:nahal_it/malika/color&font_managment.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'api.dart';
 
 class ContainerWithIndicator extends StatelessWidget {
   const ContainerWithIndicator({
@@ -18,6 +22,8 @@ class ContainerWithIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final cart = Provider.of<CartProvider>(context);
+    final cart = Provider.of<Cart>(context);
     return SizedBox(
       height: size.height / 1.5,
       width: double.infinity,
@@ -60,7 +66,10 @@ class ContainerWithIndicator extends StatelessWidget {
                       ),
                       // اینجا باید این قالب به سبد افزوده شود
                       ElevatedButton(
-                          onPressed: () {}, child: const Text("افزودن به سبد"))
+                          onPressed: () {
+                            cart.add(items[index]);
+                          },
+                          child: const Text("افزودن به سبد"))
                     ],
                   ),
                 ),
@@ -240,7 +249,7 @@ class DrawerBook extends StatelessWidget {
         },
         child: const Text(
           'ورود و عضویت',
-          style: elevatedButtonText,
+          style: elevButtonText,
         ),
       ),
 

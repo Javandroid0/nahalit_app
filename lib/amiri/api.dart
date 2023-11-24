@@ -125,9 +125,9 @@ class Product {
 }
 
 List<Product> product = [
-  Product(title: 'پلاگین', image: "images/plug.png"),
   Product(title: 'اپلیکیشن', image: "images/play.png"),
   Product(title: 'Html قالب', image: "images/html5.png"),
+  Product(title: 'پلاگین', image: "images/plug.png"),
   Product(title: 'سایت', image: "images/web.png"),
   Product(title: 'ورد پرس', image: "images/wordpress.png"),
 ];
@@ -229,7 +229,7 @@ List<Item> items = [
   ),
   Item(
     image: 'images/nahal.png',
-    title1: 'amp نسخه وب سایت',
+    title1: 'udm نسخه وب سایت',
     title2: 'پلاگین کاربردی',
     title3: 'قالب و پلاگین',
     description:
@@ -239,7 +239,7 @@ List<Item> items = [
   ),
   Item(
     image: 'images/nahal.png',
-    title1: 'amp نسخه وب سایت',
+    title1: 'apk نسخه وب سایت',
     title2: 'پلاگین کاربردی',
     title3: 'قالب و پلاگین',
     description:
@@ -249,7 +249,7 @@ List<Item> items = [
   ),
   Item(
     image: 'images/nahal.png',
-    title1: 'amp نسخه وب سایت',
+    title1: 'css نسخه وب سایت',
     title2: 'پلاگین کاربردی',
     title3: 'قالب و پلاگین',
     description:

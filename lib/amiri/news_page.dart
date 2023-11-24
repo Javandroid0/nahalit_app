@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:readmore/readmore.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({super.key});

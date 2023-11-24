@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:nahal_it/cart_provider.dart';
 import 'package:nahal_it/malika/word_press.dart';
-import 'package:nahal_it/news_page.dart';
-import 'package:nahal_it/widgets.dart';
+import 'package:nahal_it/amiri/news_page.dart';
+import 'package:nahal_it/amiri/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'api.dart';
+import 'amiri/api.dart';
+import 'amiri/cart_screen.dart';
+import 'package:badges/badges.dart' as badges;
 
 // ignore: must_be_immutable
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // DBHelper dbHelper = DBHelper();
 /*
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri(scheme: "https", host: url);
@@ -17,27 +28,89 @@ class HomeScreen extends StatelessWidget {
   }
 */
   final _controller = PageController();
+
   final _controler = PageController();
+
   List title = [
-    "محصولات",
+    "اموزش وردپرس",
     "ثبت سفارش",
     "بلاگ",
-    "نمونه کارها",
-    "اموزش",
-    "تماس با ما",
-    "خدمات ما",
+    "پریمر",
+    "طراحی سایت",
+    "اپلیکیشن",
+    "سئو",
+    "ui/ux",
+    "پروشور",
+    "پوستر",
+    "کاتالوگ",
+    "لوگو",
+    "کارت ویزیت",
   ];
+
   @override
   Widget build(BuildContext context) {
+    //  final cart = Provider.of<CartProvider>(context);
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         //  appBar: newMethod(size),
-        drawer: Drawer(
-          // صدا زدن رنگ پس زمینه از themeData
-          backgroundColor: Colors.deepPurple,
-          child: DrawerBook(),
+
+        appBar: AppBar(
+          //backgroundColor: Colors.green,
+          toolbarHeight: 80,
+          title: const SizedBox(
+            height: 40,
+            child: TextField(
+              decoration: InputDecoration(
+                  label: Icon(Icons.search_rounded),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25)))),
+            ),
+          ),
+          leadingWidth: size.width / 4,
+          leading: Row(
+            children: [
+              //const SizedBox(width: 5),
+              Builder(builder: (context) {
+                return IconButton(
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    icon: const Icon(Icons.menu));
+              }),
+
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CartScreen()));
+                  },
+                  icon: badges.Badge(
+                      position: badges.BadgePosition.topEnd(top: -10, end: -12),
+                      showBadge: true,
+                      ignorePointer: false,
+                      // onTap: () {},
+                      badgeContent:
+                          Consumer<Cart>(builder: (context, cart, child) {
+                        return Text("${cart.count}",
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 10));
+                      }),
+                      badgeStyle: badges.BadgeStyle(
+                        shape: badges.BadgeShape.circle,
+                        badgeColor: Colors.amber,
+                        padding: const EdgeInsets.all(5),
+                        borderRadius: BorderRadius.circular(4),
+                        borderSide:
+                            const BorderSide(color: Colors.black, width: 2),
+                        elevation: 0,
+                      ),
+                      child: const Icon(Icons.shopping_cart_rounded))),
+            ],
+          ),
         ),
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         body: SingleChildScrollView(
           child: Column(
@@ -45,12 +118,41 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
               const CustomSlider(),
               const SizedBox(height: 15),
+              SizedBox(
+                height: size.width / 6,
+                width: double.infinity,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: title.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: size.width / 7,
+                          width: size.width / 4,
+                          decoration: BoxDecoration(
+                              color: Colors.deepPurple,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Text(
+                              title[index],
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
+              const SizedBox(height: 10),
               // this one GrideViewWidget it a Widget
               // i creat
               // GrideViewWidget(size: size),
               FirstListViewBuilder(size: size),
               SecondListViewBuilder(size: size),
               // A Container to showing Product for Sell
+              // this widget have add to buy List Botton
               ContainerWithIndicator(size: size, controller: _controller),
               // this a dots when you scroll to right
               // or left they goes to the next dot
@@ -361,8 +463,9 @@ class APageViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
     return SizedBox(
-      height: size.height / 2.0,
+      height: size.height / 1.5,
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -392,6 +495,11 @@ class APageViewBuilder extends StatelessWidget {
                         const Text("قالب در دست ساخت ابروان"),
                         const Text("unName"),
                         const Text("119.0"),
+                        ElevatedButton(
+                            onPressed: () {
+                              cart.add(items[index]);
+                            },
+                            child: const Text("افزودن به سبد"))
                       ],
                     ),
                   ),
@@ -414,7 +522,7 @@ class FirstListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.width / 1.8,
+      height: size.width / 2.0,
       width: double.infinity,
       child: ListView.builder(
           itemCount: thingsList.length,
@@ -461,7 +569,7 @@ class SecondListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.width / 1.8,
+      height: size.width / 2.0,
       width: double.infinity,
       child: ListView.builder(
           itemCount: thingsList.length,

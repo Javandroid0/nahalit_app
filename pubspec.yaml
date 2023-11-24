@@ -41,6 +41,11 @@ dependencies:
   url_launcher: ^6.1.14
   font_awesome_flutter: ^10.6.0
   readmore: ^2.2.0
+  path_provider: ^2.1.1
+  provider: ^6.1.1
+  shared_preferences: ^2.2.2
+  badges: ^3.1.2
+  sqflite: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -102,6 +107,8 @@ flutter:
     - images/web.png
     - images/wordpress.png
     - images/nahal.png
+    - images/que.png
+    - images/set.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

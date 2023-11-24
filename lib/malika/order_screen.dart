@@ -201,7 +201,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                       child: Center(
                                         child: Text(
                                           'سفارش طراحی',
-                                          style: bodyLarge,
+                                          // style: bodyLarge,
                                         ),
                                       ),
                                     ),

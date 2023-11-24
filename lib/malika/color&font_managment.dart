@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 // صفحه ی مدیریت استایل های فونت و رنگ
@@ -20,10 +22,8 @@ const appBarTitle = TextStyle(
 );
 
 // فونت نوشته ی دکمه ی ورود و عضویت
-const elevatedButtonText = TextStyle(
-  fontSize: 16,
-  fontWeight: FontWeight.bold,
-);
+const elevButtonText =
+    TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white);
 
 // فونت نوشته ی دکمه ی ثبت سفارش
 const elevatedButtonText1 = TextStyle(
@@ -40,13 +40,6 @@ const profileTitle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-// فونت درشت برای نوشته عنوان صفحه
-const bodyLarge = TextStyle(
-  color: Colors.black,
-  fontSize: 30,
-  fontWeight: FontWeight.bold,
-);
-
 // فونت کمی درشت برای موضوع صفحه
 const bodyMedium = TextStyle(
   color: Colors.black,
@@ -58,6 +51,7 @@ const bodyMedium = TextStyle(
 const bodySmall = TextStyle(
   color: Colors.black,
   fontSize: 22,
+  fontWeight: FontWeight.bold,
 );
 
 // نوشته های داخل کادر TextField هنگام وارد کردن اطلاعات
@@ -66,8 +60,8 @@ const labelStyle = TextStyle(
   color: lightGreenColor,
 );
 
-// شکل متن کم رنگ راهنمای TextField در ثبت سفارش
-const hintStyle = TextStyle(
-  fontSize: 18,
-  fontWeight: FontWeight.bold,
+// wordpress and sell page font
+const word = TextStyle(
+  fontSize: 16,
+  color: Colors.redAccent,
 );

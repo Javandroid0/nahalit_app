@@ -4,7 +4,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'log_in_two.dart';
 
 class LogInOne extends StatefulWidget {
-  LogInOne({super.key});
+  const LogInOne({super.key});
 
   @override
   State<LogInOne> createState() => _LogInOneState();
@@ -43,7 +43,7 @@ class _LogInOneState extends State<LogInOne> {
                     return SizedBox(
                       width: double.infinity,
                       child: Stack(children: [
-                        Positioned(
+                        const Positioned(
                           right: 10,
                           top: 130,
                           child: CircleAvatar(
@@ -62,7 +62,7 @@ class _LogInOneState extends State<LogInOne> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.check_circle_rounded,
                                   color: Colors.blue,
                                   size: 30,
@@ -94,7 +94,7 @@ class _LogInOneState extends State<LogInOne> {
                             ),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           left: 40,
                           top: 200,
                           child: CircleAvatar(
@@ -114,7 +114,7 @@ class _LogInOneState extends State<LogInOne> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.check_circle_rounded,
                                     color: Colors.blue,
                                     size: 30,
@@ -170,8 +170,10 @@ class _LogInOneState extends State<LogInOne> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LogInTwo()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LogInTwo()));
                     },
                     child: Container(
                       width: 230,
