@@ -43,11 +43,18 @@ class _LogInOneState extends State<LogInOne> {
                     return SizedBox(
                       width: double.infinity,
                       child: Stack(children: [
-                        const Positioned(
+                        // container and circlur avatar num 1
+                        Positioned(
                           right: 10,
                           top: 130,
                           child: CircleAvatar(
                             radius: 40,
+                            child: Center(
+                              child: Image.asset(
+                                "images/layers.png",
+                                scale: 9,
+                              ),
+                            ),
                           ),
                         ),
                         Positioned(
@@ -94,16 +101,81 @@ class _LogInOneState extends State<LogInOne> {
                             ),
                           ),
                         ),
-                        const Positioned(
+                        // container and circlur avatar num 2
+                        Positioned(
                           left: 40,
                           top: 200,
                           child: CircleAvatar(
                             radius: 50,
+                            child: Image.asset(
+                              "images/python.png",
+                              scale: 6,
+                            ),
                           ),
                         ),
                         Positioned(
                           left: 60,
                           top: 180,
+                          child: Container(
+                              height: size.width / 9.9,
+                              width: size.width / 3.0,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Icon(
+                                    Icons.check_circle_rounded,
+                                    color: Colors.blue,
+                                    size: 30,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Container(
+                                        height: 5,
+                                        width: size.width / 5,
+                                        decoration: BoxDecoration(
+                                            color: Colors.lightBlueAccent,
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                      ),
+                                      Container(
+                                        height: 5,
+                                        width: size.width / 7,
+                                        decoration: BoxDecoration(
+                                            color: Colors.lightBlueAccent,
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              )),
+                        ),
+                        ///////////////////////////////////////////////
+                        // container and circlur avatar num 3
+                        Positioned(
+                          left: size.width / 3.5,
+                          top: size.height / 2.4,
+                          child: CircleAvatar(
+                            radius: 60,
+                            child: Center(
+                              child: Image.asset(
+                                "images/html5.png",
+                                scale: 6,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: size.width / 2.5,
+                          top: size.height / 2.5,
                           child: Container(
                               height: size.width / 9.9,
                               width: size.width / 3.0,

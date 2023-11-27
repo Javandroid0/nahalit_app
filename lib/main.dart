@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nahal_it/aiden/log_in_one.dart';
+import 'package:nahal_it/aiden/splash_screen.dart';
 import 'package:nahal_it/cart_provider.dart';
 import 'package:provider/provider.dart';
 import 'amiri/widgets.dart';
@@ -40,9 +42,10 @@ class MyApp extends StatelessWidget {
             ),
             body: //CartScreen()
                 //  SellingPage(),
-                const HomeScreen(),
+                //  const HomeScreen(),
+                SplashScreen(),
+            // LogInOne(),
           ),
-          //SplashScreen(),
         );
       }),
     );
