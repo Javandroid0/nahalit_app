@@ -42,8 +42,8 @@ class MyApp extends StatelessWidget {
             ),
             body: //CartScreen()
                 //  SellingPage(),
-                //  const HomeScreen(),
-                SplashScreen(),
+                const HomeScreen(),
+            //   SplashScreen(),
             // LogInOne(),
           ),
         );

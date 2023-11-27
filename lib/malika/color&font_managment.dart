@@ -50,7 +50,7 @@ const bodyMedium = TextStyle(
 // فونت متوسط برای درباره موضوع یا اطلاعات بیشتر
 const bodySmall = TextStyle(
   color: Colors.black,
-  fontSize: 22,
+  fontSize: 18,
   fontWeight: FontWeight.bold,
 );
 

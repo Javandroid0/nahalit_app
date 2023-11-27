@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nahal_it/amiri/news_api.dart';
 import 'package:nahal_it/cart_provider.dart';
+import 'package:nahal_it/malika/order_screen.dart';
 import 'package:nahal_it/malika/word_press.dart';
 import 'package:nahal_it/amiri/news_page.dart';
 import 'package:nahal_it/amiri/widgets.dart';
@@ -34,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> {
   List title = [
     "اموزش وردپرس",
     "ثبت سفارش",
-    "بلاگ",
     "پریمر",
     "طراحی سایت",
     "اپلیکیشن",
@@ -133,12 +134,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           decoration: BoxDecoration(
                               color: Colors.deepPurple,
                               borderRadius: BorderRadius.circular(8)),
-                          child: Center(
-                            child: Text(
-                              title[index],
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const OrdersScreen()));
+                            },
+                            child: Center(
+                              child: Text(
+                                title[index],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
                         ),
@@ -370,12 +380,15 @@ class HomePageNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: size.height / 0.65,
-      width: double.infinity,
-      child: ListView.builder(
-          itemCount: 3,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) => Padding(
+        height: size.height / 0.60,
+        width: double.infinity,
+        child: ListView.builder(
+            itemCount: news.length,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              final articl = news[index];
+
+              return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
@@ -386,10 +399,10 @@ class HomePageNews extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(15),
-                            image: const DecorationImage(
-                                image: NetworkImage(
-                                  "https://blog.codemagic.io/uploads/covers/codemagic-blog-header-Dart-vs-Javascript.png",
-                                ),
+                            image: DecorationImage(
+                                image: NetworkImage(articl.image
+                                    // "https://blog.codemagic.io/uploads/covers/codemagic-blog-header-Dart-vs-Javascript.png",
+                                    ),
                                 fit: BoxFit.cover)),
                       ),
                       Positioned(
@@ -421,22 +434,26 @@ class HomePageNews extends StatelessWidget {
                         ),
                       ),
                     ]),
-                    const ListTile(
+                    ListTile(
                       title: Text(
-                        "جاوا اسکریپت خوش زبان قسمت سی و پنجم",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        articl.title,
+                        textDirection: TextDirection.rtl,
+
+                        ///  "جاوا اسکریپت خوش زبان قسمت سی و پنجم",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
-                        "به کلاس ریاضی کلاس دهم - دست نگه دارید! من قصد ندارم شما را با بی پایان شکنجه کنم صفحات نمادهای رمزآلود - در حال حاضر فقط این یک فرمول است. و حتی با این یکی، تنها کاری که انجام...",
+                        "${articl.subtitle} ....",
+                        textDirection: TextDirection.rtl,
                         maxLines: 4,
                       ),
                     ),
                     FilledButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const NewsPage()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => NewsPage(
+                                    articl: articl,
+                                  )));
                         },
                         child: const Text("...بیشتر بخوانید")),
                     const Divider(
@@ -446,8 +463,8 @@ class HomePageNews extends StatelessWidget {
                     )
                   ],
                 ),
-              )),
-    );
+              );
+            }));
   }
 }
 

@@ -10,31 +10,15 @@ class OrdersScreen extends StatefulWidget {
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  List texts = [
-    const Text(
-      'شما در ابتدا برای ثبت سفارش خود باید با مراجعه به بخش پشتیبانی یک تیکت با موضوع سفارش طراحی بدهید .',
-    ),
-    const Text(
-      'در بخش پشتیبانی با انتخاب دپارتمان ارتباط با نهال آی تی و انتخاب نوع تیکت قیمت سفارش طراحی سفارش خود را مطرح نمایید .',
-    ),
-    const Text(
-      'بعد با شرح کامل سفارش طراحی برایمان به طورکامل توضیح دهید .',
-    ),
-    const Text(
-      'حتی میتوانید با امکان ویس دادن در بخش پشتیبانی ، توضیحات خود را با ویس ارائه دهید .',
-    ),
-    const Text(
-      'بعد از تیکت ، همکاران ما در بخش پشتیبانی بهای انجام پروژه را برای شما اعلام خواهند کرد .',
-    ),
-    const Text(
-      'سپس در صورت نداشتن مشکلی اعلام کنید که پروژه اغاز شود .',
-    ),
-    const Text(
-      'سپس با مراجعه به این صفحه ثبت سفارش را به صورت رسمی انجام دهید .',
-    ),
-    const Text(
-      'لازم به ذکر است شما می توانید پرداخت بهای انجام پروژه را به صورت قسطی نیز پرداخت نمایید.',
-    ),
+  List<dynamic> texts = [
+    'شما در ابتدا برای ثبت سفارش خود باید با مراجعه به بخش پشتیبانی یک تیکت با موضوع سفارش طراحی بدهید .',
+    'در بخش پشتیبانی با انتخاب دپارتمان ارتباط با نهال آی تی و انتخاب نوع تیکت قیمت سفارش طراحی سفارش خود را مطرح نمایید .',
+    'بعد با شرح کامل سفارش طراحی برایمان به طورکامل توضیح دهید .',
+    'حتی میتوانید با امکان ویس دادن در بخش پشتیبانی ، توضیحات خود را با ویس ارائه دهید .',
+    'بعد از تیکت ، همکاران ما در بخش پشتیبانی بهای انجام پروژه را برای شما اعلام خواهند کرد .',
+    'سپس در صورت نداشتن مشکلی اعلام کنید که پروژه اغاز شود .',
+    'سپس با مراجعه به این صفحه ثبت سفارش را به صورت رسمی انجام دهید .',
+    'لازم به ذکر است شما می توانید پرداخت بهای انجام پروژه را به صورت قسطی نیز پرداخت نمایید.',
   ];
 
   bool showInfoWidget = true;
@@ -214,18 +198,19 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                         style: bodyMedium,
                                       ),
                                     ),
-                                    ListView.builder(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: texts.length,
-                                      itemBuilder: (context, index) => Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 5,
-                                        ),
-                                        child: Text(
-                                          texts[index].texts,
-                                          style: bodySmall,
+                                    Expanded(
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: texts.length,
+                                        itemBuilder: (context, index) =>
+                                            Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            texts[index],
+                                            style: bodySmall,
+                                          ),
                                         ),
                                       ),
                                     ),
