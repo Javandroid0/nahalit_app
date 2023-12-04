@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nahal_it/amiri/selling_page.dart';
+import 'selling_page.dart';
 import 'package:provider/provider.dart';
-import '../amiri/api.dart';
+import 'api.dart';
 import '../cart_provider.dart';
-import '../amiri/cart_screen.dart';
+import 'cart_screen.dart';
 import 'color&font_managment.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -167,7 +167,7 @@ class _WordPressPliginScreenState extends State<WordPressPliginScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          ElvBut(ite: ite),
+                                          //ElvBut(ite: ite),
                                           ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                               backgroundColor:
@@ -221,33 +221,33 @@ class _WordPressPliginScreenState extends State<WordPressPliginScreen> {
   }
 }
 
-class ElvBut extends StatelessWidget {
-  const ElvBut({
-    super.key,
-    required this.ite,
-  });
+// class ElvBut extends StatelessWidget {
+//   const ElvBut({
+//     super.key,
+//     required this.ite,
+//   });
 
-  final Item ite;
+//   final Item ite;
 
-  @override
-  Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context);
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: lightGreenColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(10),
-          ),
-        ),
-      ),
-      onPressed: () {
-        cart.add(ite);
-      },
-      child: const Text(
-        'افزودن به سبد خرید',
-        style: elevButtonText,
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     final cart = Provider.of<Cart>(context);
+//     return ElevatedButton(
+//       style: ElevatedButton.styleFrom(
+//         backgroundColor: lightGreenColor,
+//         shape: const RoundedRectangleBorder(
+//           borderRadius: BorderRadius.all(
+//             Radius.circular(10),
+//           ),
+//         ),
+//       ),
+//       onPressed: () {
+//         cart.add(ite);
+//       },
+//       child: const Text(
+//         'افزودن به سبد خرید',
+//         style: elevButtonText,
+//       ),
+//     );
+//   }
+// }

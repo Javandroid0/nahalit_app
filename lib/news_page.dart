@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nahal_it/amiri/news_api.dart';
+import 'news_api.dart';
 
 class NewsPage extends StatelessWidget {
   const NewsPage({

@@ -1,6 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'color&font_managment.dart';
+import 'package:nahal_it/SideMenu/class_list_title.dart';
+// import 'package:nahal_it/color&font_managment.dart';
+import 'package:nahal_it/screens/appbar_screen.dart';
+import 'package:nahal_it/styles/styles.dart';
+// import 'package:side_menu_app/SideMenu/class_list_title.dart';
+// import 'package:side_menu_app/screens/appbar_screen.dart';
+// import 'package:side_menu_app/styles/styles.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});
@@ -10,15 +16,52 @@ class OrdersScreen extends StatefulWidget {
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  List<dynamic> texts = [
-    'شما در ابتدا برای ثبت سفارش خود باید با مراجعه به بخش پشتیبانی یک تیکت با موضوع سفارش طراحی بدهید .',
-    'در بخش پشتیبانی با انتخاب دپارتمان ارتباط با نهال آی تی و انتخاب نوع تیکت قیمت سفارش طراحی سفارش خود را مطرح نمایید .',
-    'بعد با شرح کامل سفارش طراحی برایمان به طورکامل توضیح دهید .',
-    'حتی میتوانید با امکان ویس دادن در بخش پشتیبانی ، توضیحات خود را با ویس ارائه دهید .',
-    'بعد از تیکت ، همکاران ما در بخش پشتیبانی بهای انجام پروژه را برای شما اعلام خواهند کرد .',
-    'سپس در صورت نداشتن مشکلی اعلام کنید که پروژه اغاز شود .',
-    'سپس با مراجعه به این صفحه ثبت سفارش را به صورت رسمی انجام دهید .',
-    'لازم به ذکر است شما می توانید پرداخت بهای انجام پروژه را به صورت قسطی نیز پرداخت نمایید.',
+  String? selectedValu;
+
+  List<String> dropDownItems = [
+    'انتخاب کنید',
+    'طراحی وب سایت اختصاصی',
+    'وب سایت و سئوی سایت',
+    'کسب و کار',
+    'شبکه های اجتماعی',
+    'موشن گرافیک',
+    'گرافیک',
+    'بیزینس پلن پروپوزال',
+    'طراحی اپلیکیشن موبایل',
+    'تدوین فیلم',
+    'تدوین صدا و صداگذاری',
+  ];
+
+  List<ListTexts> texts = [
+    ListTexts(
+      texts:
+          'شما در ابتدا برای ثبت سفارش خود باید با مراجعه به بخش پشتیبانی یک تیکت با موضوع سفارش طراحی بدهید .',
+    ),
+    ListTexts(
+      texts:
+          'در بخش پشتیبانی با انتخاب دپارتمان ارتباط با نهال آی تی و انتخاب نوع تیکت قیمت سفارش طراحی سفارش خود را مطرح نمایید .',
+    ),
+    ListTexts(
+      texts: 'بعد با شرح کامل سفارش طراحی برایمان به طورکامل توضیح دهید .',
+    ),
+    ListTexts(
+      texts:
+          'حتی میتوانید با امکان ویس دادن در بخش پشتیبانی ، توضیحات خود را با ویس ارائه دهید .',
+    ),
+    ListTexts(
+      texts:
+          'بعد از تیکت ، همکاران ما در بخش پشتیبانی بهای انجام پروژه را برای شما اعلام خواهند کرد .',
+    ),
+    ListTexts(
+      texts: 'سپس در صورت نداشتن مشکلی اعلام کنید که پروژه اغاز شود .',
+    ),
+    ListTexts(
+      texts: 'سپس با مراجعه به این صفحه ثبت سفارش را به صورت رسمی انجام دهید .',
+    ),
+    ListTexts(
+      texts:
+          'لازم به ذکر است شما می توانید پرداخت بهای انجام پروژه را به صورت قسطی نیز پرداخت نمایید.',
+    ),
   ];
 
   bool showInfoWidget = true;
@@ -26,8 +69,8 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ثبت سفارش'),
+      appBar: const AppBarScreen(
+        title: 'ثبت سفارش',
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -77,10 +120,49 @@ class _OrdersScreenState extends State<OrdersScreen> {
                             const SizedBox(
                               height: 20,
                             ),
-                            _buildTextField(
-                              keyboardType: TextInputType.text,
-                              labelText: 'سفارش پروژه',
-                              hintText: 'سفارش پروژه',
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: lightGreenColor,
+                                  width: 3,
+                                ),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                ),
+                                child: DropdownButton<String>(
+                                  style: dropdownButton,
+                                  hint: const Text(
+                                    'انتخاب کنید',
+                                    style: TextStyle(
+                                      color: lightGreenColor,
+                                    ),
+                                  ),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  isExpanded: true,
+                                  dropdownColor:
+                                      const Color.fromARGB(255, 197, 255, 182),
+                                  value: selectedValu,
+                                  items: dropDownItems
+                                      .map(
+                                        (String value) =>
+                                            DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value),
+                                        ),
+                                      )
+                                      .toList(),
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      selectedValu = newValue!;
+                                    });
+                                  },
+                                ),
+                              ),
                             ),
                             const SizedBox(
                               height: 20,
@@ -185,7 +267,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                       child: Center(
                                         child: Text(
                                           'سفارش طراحی',
-                                          // style: bodyLarge,
+                                          style: bodyLarge,
                                         ),
                                       ),
                                     ),
@@ -198,19 +280,18 @@ class _OrdersScreenState extends State<OrdersScreen> {
                                         style: bodyMedium,
                                       ),
                                     ),
-                                    Expanded(
-                                      child: ListView.builder(
-                                        shrinkWrap: true,
-                                        physics:
-                                            const NeverScrollableScrollPhysics(),
-                                        itemCount: texts.length,
-                                        itemBuilder: (context, index) =>
-                                            Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            texts[index],
-                                            style: bodySmall,
-                                          ),
+                                    ListView.builder(
+                                      shrinkWrap: true,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemCount: texts.length,
+                                      itemBuilder: (context, index) => Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: 5,
+                                        ),
+                                        child: Text(
+                                          texts[index].texts,
+                                          style: bodySmall,
                                         ),
                                       ),
                                     ),

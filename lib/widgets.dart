@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nahal_it/aiden/log_in_two.dart';
+// import 'package:nahal_it/aiden/log_in_two.dart';
 import 'package:nahal_it/cart_provider.dart';
-import 'package:nahal_it/malika/color&font_managment.dart';
+// import 'package:nahal_it/malika/color&font_managment.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -224,7 +224,7 @@ class DrawerBook extends StatelessWidget {
       const SizedBox(height: 20),
       const Text(
         'سلام به کاربر عزیز',
-        style: profileTitle,
+        // style: profileTitle,
       ),
       // اضافه کردن فاصله ی بین متن ها
       const SizedBox(height: 5),
@@ -240,16 +240,16 @@ class DrawerBook extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const LogInTwo(),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => const LogInTwo(),
+          //   ),
+          // );
         },
         child: const Text(
           'ورود و عضویت',
-          style: elevButtonText,
+          // style: elevButtonText,
         ),
       ),
 
@@ -269,7 +269,7 @@ class DrawerBook extends StatelessWidget {
         ),
         title: const Text(
           'تماس با ما',
-          style: profileTitle,
+          // style: profileTitle,
         ),
       ),
       ListTile(
@@ -280,7 +280,7 @@ class DrawerBook extends StatelessWidget {
         ),
         title: const Text(
           'نمونه کارها',
-          style: profileTitle,
+          // style: profileTitle,
         ),
       ),
       ListTile(
@@ -291,7 +291,7 @@ class DrawerBook extends StatelessWidget {
         ),
         title: const Text(
           'خدمات ما',
-          style: profileTitle,
+          // style: profileTitle,
         ),
       ),
       ListTile(
@@ -302,7 +302,7 @@ class DrawerBook extends StatelessWidget {
         ),
         title: const Text(
           'محصولات',
-          style: profileTitle,
+          // style: profileTitle,
         ),
       ),
       ListTile(
@@ -313,7 +313,7 @@ class DrawerBook extends StatelessWidget {
         ),
         title: const Text(
           'ثبت سفارش',
-          style: profileTitle,
+          // style: profileTitle,
         ),
       ),
       ListTile(
@@ -324,7 +324,7 @@ class DrawerBook extends StatelessWidget {
         ),
         title: const Text(
           'بلاگ',
-          style: profileTitle,
+          // style: profileTitle,
         ),
       ),
       ListTile(
@@ -335,7 +335,7 @@ class DrawerBook extends StatelessWidget {
           ),
           title: const Text(
             'استخدام',
-            style: profileTitle,
+            // style: profileTitle,
           )),
       const Divider(
         color: Colors.white70,

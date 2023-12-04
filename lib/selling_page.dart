@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import '../malika/color&font_managment.dart';
+// import '../malika/color&font_managment.dart';
 
 class SellingPage extends StatelessWidget {
   SellingPage({super.key});
@@ -57,7 +57,7 @@ class SellingPage extends StatelessWidget {
             const SizedBox(height: 20),
             const Text(
               "توضیحات",
-              style: bodySmall,
+              // style: bodySmall,
               textDirection: TextDirection.rtl,
             ),
             SizedBox(
@@ -97,7 +97,7 @@ class SellingPage extends StatelessWidget {
                 onPressed: () {},
                 child: const Text(
                   'خرید محصول',
-                  style: elevButtonText,
+                  // style: elevButtonText,
                 ),
               ),
             ),
