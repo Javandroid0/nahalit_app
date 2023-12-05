@@ -9,6 +9,8 @@ import 'package:nahal_it/cart_provider.dart';
 // import 'package:nahal_it/malika/order_screen.dart';
 // import 'package:nahal_it/malika/word_press.dart';
 import 'news_page.dart';
+import 'screens/menu_screen.dart';
+import 'screens/orders_screen.dart';
 import 'widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -55,63 +57,67 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //  final cart = Provider.of<CartProvider>(context);
+    //final cart = Provider.of<CartProvider>(context);
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         //  appBar: newMethod(size),
         appBar: AppBar(
-          //backgroundColor: Colors.green,
+          // backgroundColor: Colors.cyan,
           toolbarHeight: 80,
-          // title: const SizedBox(
-          //   height: 40,
-          //   child: TextField(
-          //     decoration: InputDecoration(
-          //         label: Icon(Icons.search_rounded),
-          //         border: OutlineInputBorder(
-          //             borderRadius: BorderRadius.all(Radius.circular(25)))),
-          //   ),
-          // ),
-          leadingWidth: size.width / 4,
-          leading: const Row(
+          title: const SizedBox(
+            height: 40,
+            child: TextField(
+              decoration: InputDecoration(
+                  label: Icon(Icons.search_rounded),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25)))),
+            ),
+          ),
+          leadingWidth: size.width / 3.5,
+          leading: Row(
             children: [
-              //const SizedBox(width: 5),
-              // Builder(builder: (context) {
-              //   return IconButton(
-              //       onPressed: () {
-              //         //Scaffold.of(context).openDrawer();
-              //       },
-              //       icon: const Icon(Icons.menu));
-              // }),
+              const SizedBox(width: 5),
+              Builder(builder: (context) {
+                return IconButton(
+                    onPressed: () {
+                      //Scaffold.of(context).openDrawer();
 
-              // IconButton(
-              //   onPressed: () {
-              //     // Navigator.push(
-              //     //     context,
-              //     //     MaterialPageRoute(
-              //     //         builder: (context) => const CartScreen()));
-              //   },
-              //   icon: badges.Badge(
-              //     position: badges.BadgePosition.topEnd(top: -10, end: -12),
-              //     showBadge: true,
-              //     ignorePointer: false,
-              //     // onTap: () {},
-              //     badgeContent: Consumer<Cart>(builder: (context, cart, child) {
-              //       return Text("${cart.count}",
-              //           style:
-              //               const TextStyle(color: Colors.white, fontSize: 10));
-              //     }),
-              //     badgeStyle: badges.BadgeStyle(
-              //       shape: badges.BadgeShape.circle,
-              //       badgeColor: Colors.amber,
-              //       padding: const EdgeInsets.all(5),
-              //       borderRadius: BorderRadius.circular(4),
-              //       borderSide: const BorderSide(color: Colors.black, width: 2),
-              //       elevation: 0,
-              //     ),
-              //     child: const Icon(Icons.shopping_cart_rounded),
-              //   ),
-              // ),
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MenuAppBarScreen()));
+                    },
+                    icon: const Icon(Icons.menu));
+              }),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CartScreen()));
+                },
+                icon: badges.Badge(
+                  position: badges.BadgePosition.topEnd(top: -10, end: -12),
+                  showBadge: true,
+                  ignorePointer: false,
+                  // onTap: () {},
+                  badgeContent: Consumer<Cart>(builder: (context, cart, child) {
+                    return Text("${cart.count}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 10));
+                  }),
+                  badgeStyle: badges.BadgeStyle(
+                    shape: badges.BadgeShape.circle,
+                    badgeColor: Colors.amber,
+                    padding: const EdgeInsets.all(5),
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(color: Colors.black, width: 2),
+                    elevation: 0,
+                  ),
+                  child: const Icon(Icons.shopping_cart_rounded),
+                ),
+              ),
             ],
           ),
         ),
@@ -121,64 +127,64 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               SizedBox(height: 20),
-              // const CustomSlider(),
+              const CustomSlider(),
               SizedBox(height: 15),
-              // SizedBox(
-              //   height: size.width / 6,
-              //   width: double.infinity,
-              //   child: ListView.builder(
-              //       scrollDirection: Axis.horizontal,
-              //       itemCount: title.length,
-              //       itemBuilder: (context, index) {
-              //         return Padding(
-              //           padding: const EdgeInsets.all(8.0),
-              //           child: Container(
-              //             height: size.width / 7,
-              //             width: size.width / 4,
-              //             decoration: BoxDecoration(
-              //                 color: Colors.deepPurple,
-              //                 borderRadius: BorderRadius.circular(8)),
-              //             child: InkWell(
-              //               onTap: () {
-              //                 // Navigator.push(
-              //                 //     context,
-              //                 //     MaterialPageRoute(
-              //                 //         builder: (context) =>
-              //                 //             const OrdersScreen()));
-              //               },
-              //               // child: Center(
-              //               //   child: Text(
-              //               //     title[index],
-              //               //     style: const TextStyle(
-              //               //         fontWeight: FontWeight.bold,
-              //               //         color: Colors.white),
-              //               //   ),
-              //               // ),
-              //             ),
-              //           ),
-              //         );
-              //       }),
-              // ),
+              SizedBox(
+                height: size.width / 6,
+                width: double.infinity,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: title.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: size.width / 7,
+                          width: size.width / 4,
+                          decoration: BoxDecoration(
+                              color: Colors.deepPurple,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const OrdersScreen()));
+                            },
+                            child: Center(
+                              child: Text(
+                                title[index],
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
               SizedBox(height: 10),
               // this one GrideViewWidget it a Widget
               // i creat
-              // GrideViewWidget(size: size),
+              //GrideViewWidget(size: size),
               FirstListViewBuilder(size: size),
               SecondListViewBuilder(size: size),
               // A Container to showing Product for Sell
               // this widget have add to buy List Botton
-              ContainerWithIndicator(size: size, controller: _controller),
+              //ContainerWithIndicator(size: size, controller: _controller),
               // this a dots when you scroll to right
               // or left they goes to the next dot
-              SmoothPageInd(controler: _controller),
+              //SmoothPageInd(controler: _controller),
               SizedBox(height: 30),
               // GrideViewWidget(size: size),
               SizedBox(height: 20),
               // Container with indacator
               WorldPress(size: size),
               SizedBox(height: 15),
-              APageViewBuilder(size: size, controler: _controler),
-              SmoothPageInd(controler: _controler),
+              //APageViewBuilder(size: size, controler: _controler),
+              //SmoothPageInd(controler: _controler),
               SizedBox(height: 30),
               const Text(
                 "اخرین مطالب نهال آی تی",
@@ -186,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 5),
               HomePageNews(size: size),
-              //const Text("اپلیکیشن نهال ای تی فروش انواع قالب و اموزش"),
+              const Text("اپلیکیشن نهال ای تی فروش انواع قالب و اموزش"),
               SizedBox(height: 20),
               //DescriptionContainer(size: size),
               SizedBox(height: 20),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nahal_it/GIridViewLearn.dart';
 import 'package:nahal_it/SideMenu/class_list_title.dart';
 import 'package:nahal_it/home_screen.dart';
 import 'package:nahal_it/screens/blog_screen.dart';
@@ -102,7 +103,7 @@ class _SideMenuTitleState extends State<SideMenuTitle> {
     const ProductsScreen(),
     const OrdersScreen(),
     const BlogScreen(),
-    const PortfolioScreen(),
+    const GiridView(),
     const RecruitmentScreen(),
   ];
 
